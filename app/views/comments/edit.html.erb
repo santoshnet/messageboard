@@ -1,0 +1,10 @@
+<h1>Editing comment</h1>
+ 
+ <%= simple_form_for([@message, @comment]) do |f| %>
+  <%= f.input :content, label: "comment" %>
+  <%= f.button :submit %>
+
+<% end %>
+
+<%= link_to 'Show', @message %> |
+<%= link_to 'Back', messages_path %>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messageboard</title>
+  <%= stylesheet_link_tag    'application', 'bootstrap-modal' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <%= link_to "MessageBoard", root_path, class: "navbar-brand" %>
+    </div>
+       <ul class="nav navbar-nav">
+       
+       <% if user_signed_in? %>
+
+       <li> <%= link_to 'SignOut', destroy_user_session_path, method: :delete, data: { confirm: 'Do U Want to LogOut ?' } %></li>
+       <% else %>
+       <li> <%= link_to "SignUp", new_user_registration_path %> </li>
+       <li> <%= link_to "SignIn", new_user_session_path %> </li>
+       <% end %>
+       </ul>
+         <% if user_signed_in? %>
+         
+         <li> <%= link_to "New Message", new_message_path, class: "navbar-right navbar-text navbar-link" %></li>
+       <% end %>
+  </div>
+</nav>
+
+<div class="container">
+<%= yield %>
+</div>
+
+</body>
+</html>
